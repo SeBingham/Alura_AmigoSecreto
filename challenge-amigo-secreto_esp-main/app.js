@@ -6,13 +6,24 @@ function ingresaramigos() {
     
     if (valorUsuario === '') {
         alert('El campo no puede estar vacío.');
-        document.getElementById('amigo').value = ''; // Limpia el campo
+        document.getElementById('amigo').value = ''; 
         return;
     }
 
     amigos.push(valorUsuario);
-    document.getElementById('amigo').value = ''; // Limpia el campo
-    console.log(amigos); // Muestra el array en la consola (opcional)
+    document.getElementById('amigo').value = ''; 
+    mostrarListaAmigos(); 
+}
+
+function mostrarListaAmigos() {
+    const lista = document.getElementById('listaAmigos');
+    lista.innerHTML = ''; // Limpia la lista existente
+
+    for (let i = 0; i < amigos.length; i++) {
+        const li = document.createElement('li');
+        li.textContent = amigos[i];
+        lista.appendChild(li); 
+    }
 }
 
 function sortearAmigo() {
